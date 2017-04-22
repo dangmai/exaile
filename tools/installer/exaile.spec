@@ -40,10 +40,10 @@ exe = EXE(pyz,
           a.scripts,
           exclude_binaries=True,
           name='exaile',
-          debug=False,
+          debug=True,
           strip=False,
           upx=True,
-          console=False )
+          console=True )
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,

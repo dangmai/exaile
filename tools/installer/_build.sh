@@ -1,3 +1,4 @@
+set -e
 
 if [ "$TARGET" == "" ]; then
   TARGET=`pwd`
@@ -48,7 +49,8 @@ find "$DESTDIR" -name '*.pyo' -delete
 if [ "$SDK_PLATFORM" == "darwin" ]; then
   pyinstaller -w --clean --distpath $DIST --workpath _build_osx exaile.spec
 else
-  (wine cmd /c _build.bat)
+  # (wine cmd /c _build.bat)
+  python -m PyInstaller --clean --distpath _dist --workpath _build --paths ./_inst/usr/lib/exaile exaile.spec
 fi
 
 # Copy extra data

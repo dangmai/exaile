@@ -6,12 +6,16 @@ from __future__ import division, print_function, unicode_literals
 
 # Make file handles not inheritable, that way we can restart on the fly
 # -> From http://www.virtualroadside.com/blog/index.php/2013/02/06/problems-with-file-descriptors-being-inherited-by-default-in-python/
+import os
+
 import __builtin__
 import msvcrt
+import pprint
 import sys
 from ctypes import windll
 
-
+pprint.pprint(os.environ)
+print(os.pathsep)
 __builtin__open = __builtins__.open
 
 
@@ -75,6 +79,7 @@ def main():
         gi.require_version('Gtk', '3.0')
         from gi.repository import Gtk
     except Exception:
+        logging.exception('gtk not found')
         error("GTK+ not found",
               "GTK+ could not be imported. " + aio_message)
     else:
