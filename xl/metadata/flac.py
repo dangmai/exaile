@@ -33,7 +33,7 @@ from mutagen.flac import Picture
 class FlacFormat(CaseInsensitveBaseFormat):
     MutagenType = flac.FLAC
     tag_mapping = {
-        'bpm': 'tempo',
+        'bpm': 'bpm',
         'cover': '__cover',
         'comment': 'description',
         'language': "Language",
